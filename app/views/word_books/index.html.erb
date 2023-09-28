@@ -15,7 +15,7 @@
                     已掌握数
                 </th>
                  <th scope="col" class="px-6 py-3">
-                    状态
+                    是否编辑
                 </th>
                 <th scope="col" class="px-6 py-3">
                     操作
@@ -35,7 +35,11 @@
                      <%= book.words.where(status: 1).count %>
                 </td>
                 <td class="px-6 py-4">
-                     <%= book.editable %>
+                    <% if book.editable %>
+                       是
+                    <% else %>
+                        否
+                     <% end %>
                 </td>
                  <td class="px-6 py-4">
                     <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">

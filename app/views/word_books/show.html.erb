@@ -14,7 +14,7 @@
                     名称
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    状态
+                    是否掌握
                 </th>
                 <th scope="col" class="px-6 py-3">
                     操作
@@ -28,7 +28,11 @@
                    <%= word.name %>
                 </th>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                   <%= word.status  %>
+                     <% if word.mastered? %>
+                       已
+                    <% else %>
+                        否
+                     <% end %>
                 </th>
                  <td class="px-6 py-4">
                     <div class="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
