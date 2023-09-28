@@ -91,11 +91,3 @@ JavaScript unit tests:
 bin/yarn test
 ```
 
-
-### Test deployment locally
-
-```
-docker network create public
-docker-compose up
-```
-
