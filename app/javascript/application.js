@@ -2,3 +2,5 @@
 import "flowbite/dist/flowbite.turbo.js";
 import "@hotwired/turbo-rails"
 import "./controllers"
+import Trix from "trix";
+import "@rails/actiontext"
