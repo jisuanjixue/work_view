@@ -1,16 +1,14 @@
 # README
 
 
-# Templatus (use hotwire edition)
-Template is an opinionated template to build web applications with Ruby on Rails and flowbite ui. It simplifies the process of setting up a new application while following best practices.
-
-Live demo available at
+# work view code
+this is an opinionated home work to build a word book web applications with Ruby on Rails and flowbite ui. It simplifies the process of setting up a new application while following best practices.
 
 ### Backend
 
 - [Ruby](https://www.ruby-lang.org/de/) 3.2.2
-- [Ruby on Rails](https://rubyonrails.org/) 7.0.4
-[PostgreSQL](https://www.postgresql.org/) for use as SQL database
+- [Ruby on Rails](https://rubyonrails.org/) 7.0.6
+- [PostgreSQL](https://www.postgresql.org/) for use as SQL database
 - [Sidekiq](https://sidekiq.org/) for background processing
 - [Redis](https://redis.io/) for Caching, ActionCable, and Sidekiq
 - [Puma](https://puma.io/) is a simple, fast, multi-threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack applications.
@@ -25,9 +23,9 @@ Live demo available at
 ### Development
 
 - [Foreman](https://github.com/ddollar/foreman) for starting up the application locally
+- [Overmind](https://github.com/DarthSim/overmind) for Process manager for Procfile-based applications and tmux
 - [dotenv](https://github.com/bkeepers/dotenv) to load environment variables from .env into ENV
 - [Prettier](https://prettier.io/) for auto-formatting JavaScript and Ruby code in Visual Studio Code
-- [Lookbook](https://github.com/allmarkedup/lookbook) as development UI for ViewComponent
 - Live reloading
 
 ### Linting and testing
@@ -35,16 +33,7 @@ Live demo available at
 - [RuboCop](https://rubocop.org/) for Ruby static code analysis
 - [ESLint](https://eslint.org/) for JavaScript static code analysis
 - [RSpec](https://rspec.info/) for Ruby testing
-- [Factory Bot](https://github.com/thoughtbot/factory_bot) for setting up Ruby objects as test data
-- [Cypress](https://www.cypress.io/) for E2E testing
 
-### Deployment
-
-- [Docker](https://www.docker.com/) for production deployment, NOT for development
-- [GitHub Actions](https://docs.github.com/en/actions) for testing, linting, and building Docker image
-- [Dependabot](https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/about-dependabot-version-updates) configuration for updating dependencies (with auto-merge)
-- Ready for serving assets via CDN like CloudFront
-- [Lockup](https://lockup.interdiscipline.com/) to place a staging server behind a basic codeword
 
 
 ## Getting started
@@ -54,8 +43,8 @@ Live demo available at
 1. Clone the repo locally:
 
 ```bash
-git clone https://github.com/jisuanjixue/Flowbite_rails_template
-cd Flowbite_rails_template
+git clone https://github.com/jisuanjixue/work_view
+cd work_view
 ```
 
 1. Install PostgreSQL, Redis, ruby, gem, javascript node module etc Setup the application to install gems and NPM packages and create the database::
@@ -67,11 +56,11 @@ bin/setup
 5. Start the application locally:
 
 ```bash
-bin/dev
+overmind start
 ```
 
 Then open http://localhost:3000 in your browser.
-
+use devise for login, username: aa11, password: 123456
 
 ### Running linters
 
@@ -102,19 +91,6 @@ JavaScript unit tests:
 bin/yarn test
 ```
 
-E2E tests with Cypress:
-
-```
-bin/cypress open
-```
-
-This opens Cypress and starts Rails in `development` environment, but with `CYPRESS=true`, so the `test` database is used. This allows code editing without class reloading and recompiling assets.
-
-To run Cypress in headless mode:
-
-```
-bin/cypress run
-```
 
 ### Test deployment locally
 
