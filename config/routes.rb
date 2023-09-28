@@ -1,3 +1,6 @@
+# == Route Map
+#
+
 Rails.application.routes.draw do
   # get 'words/create'
   # get 'words/destroy'
