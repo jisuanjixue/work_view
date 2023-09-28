@@ -1,8 +1,12 @@
 class WordBooksController < ApplicationController
+  include Pagy::Backend
   before_action :set_wordbook, only: [:show]
 
   def index
-    @word_books = WordBook.all.includes(:user).order(created_at: :desc)
+    @book_all = WordBook.all.includes(:user).order(created_at: :desc)
+    @pagy, @word_books = pagy(@book_all)
+    rescue Pagy::OverflowError
+    redirect_to root_path(page: 1)
   end
 
   def show

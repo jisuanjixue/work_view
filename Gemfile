@@ -94,3 +94,4 @@ gem 'authtrail', '~> 0.5.0'
 gem "activerecord-import", "~> 1.5"
 gem 'image_processing', '~> 1.2'
 gem 'friendly_id', '~> 5.4.0'
+gem 'pagy', '~> 6.0'
