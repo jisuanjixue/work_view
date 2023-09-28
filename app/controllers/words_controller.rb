@@ -23,7 +23,10 @@ class WordsController < ApplicationController
 
   def destroy
     @word.destroy!
-    redirect_to word_book_path(@word_book)
+      respond_to do |format|
+        format.html {  redirect_to word_book_path(@word_book), notice: '单词删除成功！.' }
+        format.json { head :no_content }
+      end
   end
 
   def mastered
