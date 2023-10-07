@@ -37,3 +37,7 @@ controllers.forEach((controller) => {
 
 application.register('intersection', IntersectionController);
 
+document.documentElement.setAttribute(
+    'data-theme',
+    window.localStorage.getItem('theme'),
+);  
