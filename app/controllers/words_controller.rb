@@ -1,6 +1,7 @@
 class WordsController < ApplicationController
   before_action :set_book, only: [:create, :destroy, :new, :show, :unmastered, :mastered ]
   before_action :set_word, only: [ :destroy, :show, :mastered, :unmastered ]
+  before_save :downcase_fields
 
   def show
   end
@@ -40,6 +41,11 @@ class WordsController < ApplicationController
   end
 
   private
+
+  def downcase_fields
+    username.downcase!
+    email.downcase!
+  end
 
   def set_book
     @word_book = current_user.word_books.find(params[:word_book_id])
