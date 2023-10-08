@@ -29,10 +29,10 @@
                    <%= book.name %>
                 </th>
                 <td class="px-6 py-4">
-                <%= book.words.count %>
+                 <%= @word_counts[book.id] %>
                 </td>
                 <td class="px-6 py-4">
-                     <%= book.words.where(status: 1).count %>
+                 <%= @mastered_word_counts[book.id] %>
                 </td>
                 <td class="px-6 py-4">
                     <% if book.editable %>

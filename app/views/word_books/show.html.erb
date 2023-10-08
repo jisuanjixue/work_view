@@ -48,4 +48,11 @@
            <% end %>
         </tbody>
     </table>
+     <div>
+    <% if @pagy.count > @pagy.items %>
+      <div class="">
+        <%== pagy_nav(@pagy) %>
+      </div>
+    <% end %>
+  </div>
 </div>

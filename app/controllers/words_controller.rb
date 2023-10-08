@@ -42,7 +42,7 @@ class WordsController < ApplicationController
   private
 
   def set_book
-    @word_book = WordBook.find(params[:word_book_id])
+    @word_book = current_user.word_books.find(params[:word_book_id])
   end
 
   def set_word
