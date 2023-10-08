@@ -21,6 +21,7 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
+  before_save :downcase_fields
   has_many :word_books, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -55,6 +56,11 @@ class User < ApplicationRecord
     return unless User.where(email: username).exists?
       errors.add(:username, :invalid)
     
+  end
+
+  def downcase_fields
+    username.downcase!
+    email.downcase!
   end
 
 
