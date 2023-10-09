@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_28_074423) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_09_034628) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -86,6 +86,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_074423) do
     t.index ["user_type", "user_id"], name: "index_login_activities_on_user"
   end
 
+  create_table "notes", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notes_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "title"
@@ -143,6 +151,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_074423) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "notes", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "word_book_words", "word_books"
   add_foreign_key "word_book_words", "words"

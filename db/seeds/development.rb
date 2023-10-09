@@ -7,16 +7,24 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 def seed_users
-  User.create!(email: 'aa11@example.com',
+  User.create!(email: 'aa111@example.com',
                      password: '123456',
                      password_confirmation: '123456',
-                     username: "aa11")
+                     username: "aa111")
 
-  User.create!(email: 'ss11@doe.com',
+  User.create!(email: 'ss111@doe.com',
                      password: '123456',
                      password_confirmation: '123456',
-                     username: "ss11",
+                     username: "ss111",
                      )
+end
+
+def seed_note
+  bobo =  User.first
+  john = User.second
+  20.times do |x|
+    Note.create!(name: "笔记 #{x}", user: bobo)
+  end
 end
 
 def seed_word_books
@@ -45,6 +53,7 @@ end
 elapsed = Benchmark.measure do
   Rails.logger.debug 'Seeding development database...'
   seed_users
+  seed_note
   seed_word_books
 end
 

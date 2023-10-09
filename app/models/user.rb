@@ -21,6 +21,7 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
+  has_many :notes, dependent: :destroy
   before_save :downcase_fields
   has_many :word_books, dependent: :destroy
   # Include default devise modules. Others available are:

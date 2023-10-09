@@ -14,7 +14,9 @@ Rails.application.routes.draw do
       patch 'mastered', on: :member      
       patch 'unmastered', on: :member
     end
-  end  
+  end 
+
+  resources :notes
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # get 'home/index'
