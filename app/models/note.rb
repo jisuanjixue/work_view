@@ -21,5 +21,5 @@ class Note < ApplicationRecord
   belongs_to :user, class_name: "User"
   validates :name, presence: true
 
-  broadcasts_to ->(_note) { 'notes' }, inserts_by: :prepend
+  broadcasts_to ->(note) { [ note.user, 'notes'] }, inserts_by: :prepend
 end

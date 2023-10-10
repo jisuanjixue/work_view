@@ -1,4 +1,4 @@
-<%= turbo_stream_from "notes" %>
+<%= turbo_stream_from current_user, "notes" %>
 <div class="container bg-white dark:bg-gray-900">
   <h1 class="text-center">学习笔记</h1>
 </div>
