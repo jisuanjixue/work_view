@@ -10,14 +10,19 @@
         >
          <%= link_to "添加笔记", new_note_path, data: { turbo_frame: dom_id(Note.new)} %>
     </button>
-    <%= turbo_frame_tag Note.new %>
-    <%= turbo_frame_tag "notes" do %>
-      <%= render @notes%>
-    <% end %>
+    <% if @notes.empty? %>
+      <%= render "quotes/empty_state" %>
+    <% else %>
+       <%= turbo_frame_tag Note.new %>
+        <%= turbo_frame_tag "notes" do %>
+          <%= render @notes%>
+        <% end %>
 
-    <% if @pagy.count > @pagy.items %>
-      <div class="">
-        <%== pagy_nav(@pagy) %>
-      </div>
+        <% if @pagy.count > @pagy.items %>
+          <div class="">
+            <%== pagy_nav(@pagy) %>
+          </div>
+        <% end %>
     <% end %>
+   
 </div>
