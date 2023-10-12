@@ -96,3 +96,4 @@ gem 'image_processing', '~> 1.2'
 gem 'friendly_id', '~> 5.4.0'
 gem 'pagy', '~> 6.0'
 gem "devise-i18n"
+

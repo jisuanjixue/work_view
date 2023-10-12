@@ -2,7 +2,7 @@ class NotesController < ApplicationController
   include Pagy::Backend
   before_action :set_note, only: [:show, :edit, :update, :destroy]
 
-  def index
+     def index
     @note_all = current_user.notes.includes(:user).order(created_at: :desc)
     @pagy, @notes = pagy(@note_all)
     rescue Pagy::OverflowError

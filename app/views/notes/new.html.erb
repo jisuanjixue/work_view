@@ -1,9 +1,9 @@
 <main class='bg-white dark:bg-gray-900'>
-  <%= link_to sanitize("&larr; Back to notes"), notes_path %>
+  <%= link_to sanitize("&larr; 返回"), notes_path %>
    <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
       <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">添加笔记</h2>
    </div>
    <%= turbo_frame_tag @note do %>
-  <%= render 'form', note: @note %>
+     <%= render 'form', note: @note %>
   <% end %>
   </main>
