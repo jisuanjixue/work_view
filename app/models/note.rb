@@ -20,6 +20,7 @@
 class Note < ApplicationRecord
   belongs_to :user, class_name: "User"
   validates :name, presence: true
+  has_many :categories,  dependent: :destroy
 
   broadcasts_to ->(note) { [ note.user, 'notes'] }, inserts_by: :prepend
 end
