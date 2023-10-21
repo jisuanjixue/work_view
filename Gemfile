@@ -92,7 +92,6 @@ gem 'omniauth-rails_csrf_protection', '~> 1.0', '>= 1.0.1'
 gem 'rack-cors', '~> 1.1', '>= 1.1.1'
 gem 'authtrail', '~> 0.5.0'
 gem "activerecord-import", "~> 1.5"
-gem 'image_processing', '~> 1.2'
 gem 'friendly_id', '~> 5.4.0'
 gem 'pagy', '~> 6.0'
 gem "devise-i18n"

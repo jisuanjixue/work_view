@@ -4,8 +4,8 @@
 # Table name: categories
 #
 #  id         :bigint           not null, primary key
-#  name       :string
-#  show       :boolean
+#  name       :string           not null
+#  show       :boolean          default(TRUE)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  note_id    :bigint           not null

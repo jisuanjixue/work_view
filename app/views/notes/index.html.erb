@@ -8,14 +8,14 @@
          type="button"
          class="inline-flex justify-end items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
         >
-         <%= link_to "添加笔记", new_note_path, data: { turbo_frame: dom_id(Note.new)} %>
+         <%= link_to "添加笔记", new_note_path, data: { turbo_frame: dom_id(Note.new) } %>
     </button>
     <% if @notes.empty? %>
-      <%= render "quotes/empty_state" %>
+      <%= render "notes/empty_state" %>
     <% else %>
        <%= turbo_frame_tag Note.new %>
         <%= turbo_frame_tag "notes" do %>
-          <%= render @notes%>
+          <%= render @notes %>
         <% end %>
 
         <% if @pagy.count > @pagy.items %>

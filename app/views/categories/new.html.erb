@@ -1,0 +1,9 @@
+<main class='bg-white dark:bg-gray-900'>
+  <%= link_to sanitize("&larr; 返回"), note_path(@note) %>
+   <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+      <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">添加笔记分类</h2>
+   </div>
+   <%= turbo_frame_tag @category do %>
+     <%= render "form", note: @note, category: @category %>
+   <% end %>
+  </main>

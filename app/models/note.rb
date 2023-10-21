@@ -22,5 +22,7 @@ class Note < ApplicationRecord
   validates :name, presence: true
   has_many :categories,  dependent: :destroy
 
+  scope :ordered, -> { order(id: :desc) }
+
   broadcasts_to ->(note) { [ note.user, 'notes'] }, inserts_by: :prepend
 end

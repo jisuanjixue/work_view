@@ -1,0 +1,5 @@
+<%= turbo_stream.remove @category %>
+  <%= turbo_stream.prepend "categories" do %>
+    <%= render @category, note: @note %>
+<% end %>
+<%= render_turbo_stream_flash_messages %>

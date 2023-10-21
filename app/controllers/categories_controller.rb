@@ -22,7 +22,7 @@ class CategoriesController < ApplicationController
     @category = @note.categories.build(category_params)
     if @category.save
       respond_to do |format|
-        format.html { redirect_to note_categories_path }
+        format.html { redirect_to note_path(@note) }
         format.turbo_stream { flash.now[:notice] = '笔记分类添加成功'}
       end
     else
@@ -33,7 +33,7 @@ class CategoriesController < ApplicationController
   def update
     if @category.update(category_params)
       respond_to do |format|
-        format.html { redirect_to note_categories_path }
+        format.html { redirect_to note_path(@note) }
         format.turbo_stream { flash.now[:notice] = '笔记分类修改成功'}
       end
     else
@@ -44,7 +44,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy!
       respond_to do |format|
-        format.html { redirect_to note_categories_path, notice: '笔记分类删除成功！.' }
+        format.html { redirect_to note_path(@note), notice: '笔记分类删除成功！.' }
         format.turbo_stream { flash.now[:notice] = '笔记分类删除成功！' }
     end
   end
@@ -60,6 +60,6 @@ class CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit(:name)
+    params.require(:category).permit(:name, :show)
   end
 end

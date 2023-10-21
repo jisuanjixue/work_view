@@ -53,8 +53,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_091020) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.boolean "show"
+    t.string "name", null: false
+    t.boolean "show", default: true
     t.bigint "note_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
