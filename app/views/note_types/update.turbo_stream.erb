@@ -1,0 +1,3 @@
+<%= turbo_stream.remove @note_type %>
+  <%= turbo_stream.prepend "note_types" do %>
+    <%= render @note_type, note: @note %>

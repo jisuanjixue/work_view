@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_12_091020) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_23_065650) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,17 +52,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_091020) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name", null: false
-    t.boolean "show", default: true
-    t.bigint "note_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name", "note_id"], name: "index_categories_on_name_and_note_id", unique: true
-    t.index ["name"], name: "index_categories_on_name"
-    t.index ["note_id"], name: "index_categories_on_note_id"
-  end
-
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -95,6 +84,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_091020) do
     t.index ["identity"], name: "index_login_activities_on_identity"
     t.index ["ip"], name: "index_login_activities_on_ip"
     t.index ["user_type", "user_id"], name: "index_login_activities_on_user"
+  end
+
+  create_table "note_types", force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "show", default: true
+    t.bigint "note_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "note_id"], name: "index_note_types_on_name_and_note_id", unique: true
+    t.index ["name"], name: "index_note_types_on_name"
+    t.index ["note_id"], name: "index_note_types_on_note_id"
   end
 
   create_table "notes", force: :cascade do |t|
@@ -162,7 +162,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_091020) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "categories", "notes"
+  add_foreign_key "note_types", "notes"
   add_foreign_key "notes", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "word_book_words", "word_books"

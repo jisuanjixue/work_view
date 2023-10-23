@@ -1,0 +1,5 @@
+<%= turbo_stream.update NoteType.new, "" %>
+ <%= turbo_stream.prepend "note_types" do %>
+    <%= render @note_type, note: @note %>
+  <% end %>
+<%= render_turbo_stream_flash_messages %>

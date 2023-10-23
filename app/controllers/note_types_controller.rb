@@ -1,5 +1,5 @@
-class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :destroy]
+class NoteTypesController < ApplicationController
+  before_action :set_note_type, only: [:show, :edit, :destroy]
   before_action :set_note
 
   def index
@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
   end
 
   def new
-    @category = @note.categories.build
+    @note_type = @note.note_types.build
   end
 
   def edit
@@ -19,8 +19,8 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = @note.categories.build(category_params)
-    if @category.save
+    @note_type = @note.note_types.build(note_type_params)
+    if @note_type.save
       respond_to do |format|
         format.html { redirect_to note_path(@note) }
         format.turbo_stream { flash.now[:notice] = '笔记分类添加成功'}
@@ -31,7 +31,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    if @category.update(category_params)
+    if @note_type.update(note_type_params)
       respond_to do |format|
         format.html { redirect_to note_path(@note) }
         format.turbo_stream { flash.now[:notice] = '笔记分类修改成功'}
@@ -42,7 +42,7 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category.destroy!
+    @note_type.destroy!
       respond_to do |format|
         format.html { redirect_to note_path(@note), notice: '笔记分类删除成功！.' }
         format.turbo_stream { flash.now[:notice] = '笔记分类删除成功！' }
@@ -51,15 +51,15 @@ class CategoriesController < ApplicationController
 
   private
 
-  def set_category
-    @category = @note.categories.find(params[:id])
+  def set_note_type
+    @note_type = @note.note_types.find(params[:id])
   end
 
   def set_note
     @note = current_user.notes.find(params[:note_id])
   end
 
-  def category_params
-    params.require(:category).permit(:name, :show)
+  def note_type_params
+    params.require(:note_type).permit(:name, :show)
   end
 end

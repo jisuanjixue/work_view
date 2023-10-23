@@ -1,4 +1,4 @@
-<%= form_with(model: [@note, @category]) do |f| %>
+<%= form_with(model: [@note, @note_type]) do |f| %>
    <div class="flex items-center content-center justify-between ">
      <%= f.text_field :name, type: "text", id: "name", placeholder: "分类", class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-32 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
      <label class="relative inline-flex items-center cursor-pointer w-12">

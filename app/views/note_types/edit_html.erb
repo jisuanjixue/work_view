@@ -1,9 +1,9 @@
 <main class="container">
   <%= link_to sanitize("&larr; Back to note"), note_path(@note) %>
   <div class="header">
-    <h1>Edit category</h1>
+    <h1>Edit note_type</h1>
   </div>
-  <%= turbo_frame_tag dom_id(@category, :edit) do %>
-    <%= render "form", note: @note, category: @category %>
+  <%= turbo_frame_tag dom_id(@note_type, :edit) do %>
+    <%= render "form", note: @note, note_type: @note_type %>
   <% end %>
 </main>

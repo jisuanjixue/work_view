@@ -20,7 +20,7 @@
 class Note < ApplicationRecord
   belongs_to :user, class_name: "User"
   validates :name, presence: true
-  has_many :categories,  dependent: :destroy
+  has_many :note_types,  dependent: :destroy
 
   scope :ordered, -> { order(id: :desc) }
 

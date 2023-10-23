@@ -10,7 +10,7 @@ class NotesController < ApplicationController
   end
 
   def show
-   @categories = @note.categories.ordered
+   @note_types = @note.note_types.ordered
   end
 
   def new
