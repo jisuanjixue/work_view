@@ -1,6 +1,6 @@
 class NoteTypesController < ApplicationController
-  before_action :set_note_type, only: [:show, :edit, :destroy]
   before_action :set_note
+  before_action :set_note_type, only: [:show, :edit, :update, :destroy]
 
   def index
 
@@ -14,10 +14,6 @@ class NoteTypesController < ApplicationController
     @note_type = @note.note_types.build
   end
 
-  def edit
-
-  end
-
   def create
     @note_type = @note.note_types.build(note_type_params)
     if @note_type.save
@@ -29,6 +25,8 @@ class NoteTypesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  def edit; end
 
   def update
     if @note_type.update(note_type_params)
