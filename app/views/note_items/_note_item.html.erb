@@ -1,0 +1,19 @@
+<%= turbo_frame_tag note_item do %>
+  <div class="">
+    <div class="">
+      <%= note_item.title %>
+      <div class="">
+        <%= note_item.description %>
+      </div>
+    </div>
+    <div class="">
+      <%= button_to "Delete",
+                    [note, note_type, note_item],
+                    method: :delete,
+                    class: "" %>
+      <%= link_to "Edit",
+                  [:edit, note, note_type, note_item],
+                  class: "" %>
+    </div>
+  </div>
+<% end %>

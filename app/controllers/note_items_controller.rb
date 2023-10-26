@@ -1,7 +1,7 @@
 class NoteItemsController < ApplicationController
   before_action :set_note
   before_action :set_note_type
-  before_action :set_note_item
+  before_action :set_note_item, only: [:edit, :update, :destory, :show]
   before_action :note_item_params, only: [:edit, :update, :destory]
 
   def new
