@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   end 
 
   resources :notes do
-    resources :note_types, expect: %i[show index]
+    resources :note_types, expect: %i[show index] do
+      resources :note_items, except: %i[index show]
+    end
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

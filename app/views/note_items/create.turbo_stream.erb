@@ -1,0 +1,5 @@
+<%= turbo_stream.update nested_dom_id(@note_type, NoteItem.new), "" %>
+<%= turbo_stream.append nested_dom_id(@note_type, "note_items") do %>
+  <%= render @note_item, note: @note, note_type: @note_type %>
+<% end %>
+<%= render_turbo_stream_flash_messages %>

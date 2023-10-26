@@ -22,6 +22,7 @@
 #
 class NoteType < ApplicationRecord
   belongs_to :note
+  has_many :note_items, dependent: :destroy
   validates :name, presence: true, uniqueness: { scope: :note_id }
 
   scope :ordered, -> {order(created_at: :desc)}
