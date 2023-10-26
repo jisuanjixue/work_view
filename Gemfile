@@ -96,3 +96,5 @@ gem 'friendly_id', '~> 5.4.0'
 gem 'pagy', '~> 6.0'
 gem "devise-i18n"
 
+
+gem "hotwire-livereload", "~> 1.3", :group => :development
