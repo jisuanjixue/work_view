@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :notes do
     resources :note_types, expect: %i[show index] do
-      resources :note_items, except: %i[index show]
+      resources :note_items, except: %i[index show ]
     end
   end
 
