@@ -4,7 +4,6 @@ import { Modal } from 'flowbite';
 export default class extends Controller {
     connect() {
         const targetEl = document.getElementById('modalEl');
-        console.log("🚀 ~ file: modal_controller.js:7 ~ extends ~ connect ~ targetEl:", targetEl)
 
         // options with default values
         const options = {
