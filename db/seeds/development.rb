@@ -32,20 +32,14 @@ def seed_word_books
   john = User.second
 
     Rails.logger.debug { "创建  word_book" }
-    WordBook.create!(name: "单词本 1", editable: true, user: bobo)
-    WordBook.create!(name: "单词本 2", editable: false, user: bobo)
-    WordBook.create!(name: "单词本 3", editable: false, user: bobo)
-    WordBook.create!(name: "单词本 4", editable: false, user: bobo)
-    WordBook.create!(name: "单词本 5", editable: false, user: bobo)
-
+    word_book = bobo.word_books.create(name: "单词本 1", editable: true, words_count: 0 )
     5.times do |y|
       Rails.logger.debug { "创建 word #{y} for book with user #{bobo.email}" }
-      Word.create(name: "单词 #{y}", pronunciation: "发音 #{y}", definition: "定义#{y}", example_sentence: "例子 #{y}", status: 0 )
+      bobo.word_books.create(name: "单词本 #{y}", editable: false, words_count: 0)
     end
 
-    5.times do |x|
-      Rails.logger.debug { "创建 word_book_word #{x} 关联 book 和word_book with user #{bobo.email}" }
-      WordBookWord.create(word_id: x, word_book_id: x)
+    5.times do |y|
+      word_book.words.create(name: "单词 #{y}", pronunciation: "发音 #{y}", definition: "定义#{y}", example_sentence: "例子 #{y}", status: 0 )
     end
 end
 

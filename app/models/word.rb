@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20230928074423
+# Schema version: 20231026075111
 #
 # Table name: words
 #
@@ -12,20 +12,26 @@
 #  status           :integer          default("unmastered")
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  word_book_id     :bigint           not null
 #
 # Indexes
 #
-#  index_words_on_slug  (slug) UNIQUE
+#  index_words_on_slug          (slug) UNIQUE
+#  index_words_on_word_book_id  (word_book_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (word_book_id => word_books.id)
 #
 class Word < ApplicationRecord
   extend FriendlyId
-  has_many :word_book_words, dependent: :destroy
-  has_many :word_books, through: :word_book_words
+  belongs_to :word_book, counter_cache: true
   enum status: { unmastered: 0, mastered: 1 }
 
   has_rich_text :example_sentence
 
   validates :name, presence: true
+  normalizes :name, with: -> { _1.squish }
 
   after_initialize :set_default_status, if: :new_record?
 

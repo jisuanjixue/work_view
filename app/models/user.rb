@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20230928074423
+# Schema version: 20231103090524
 #
 # Table name: users
 #
@@ -12,6 +12,7 @@
 #  reset_password_token   :string
 #  uid                    :string
 #  username               :string
+#  word_books_count       :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -24,6 +25,7 @@ class User < ApplicationRecord
   has_many :notes, dependent: :destroy
   before_save :downcase_fields
   has_many :word_books, dependent: :destroy
+  has_many :words, through: :word_books
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable,

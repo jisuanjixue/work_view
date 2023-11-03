@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_26_075111) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_03_090524) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -114,16 +114,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_075111) do
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "title"
-    t.text "description"
-    t.integer "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_posts_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -135,22 +125,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_075111) do
     t.string "username"
     t.string "provider"
     t.string "uid"
+    t.integer "word_books_count"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "word_book_words", force: :cascade do |t|
-    t.bigint "word_id", null: false
-    t.bigint "word_book_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["word_book_id"], name: "index_word_book_words_on_word_book_id"
-    t.index ["word_id"], name: "index_word_book_words_on_word_id"
   end
 
   create_table "word_books", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id", null: false
+    t.integer "words_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "editable", default: false
@@ -162,11 +145,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_075111) do
     t.string "pronunciation"
     t.text "definition"
     t.text "example_sentence"
+    t.bigint "word_book_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
     t.string "slug"
     t.index ["slug"], name: "index_words_on_slug", unique: true
+    t.index ["word_book_id"], name: "index_words_on_word_book_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -174,8 +159,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_075111) do
   add_foreign_key "note_items", "note_types"
   add_foreign_key "note_types", "notes"
   add_foreign_key "notes", "users"
-  add_foreign_key "posts", "users"
-  add_foreign_key "word_book_words", "word_books"
-  add_foreign_key "word_book_words", "words"
   add_foreign_key "word_books", "users"
+  add_foreign_key "words", "word_books"
 end

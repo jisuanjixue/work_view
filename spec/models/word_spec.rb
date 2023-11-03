@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20230928074423
+# Schema version: 20231026075111
 #
 # Table name: words
 #
@@ -12,10 +12,16 @@
 #  status           :integer          default("unmastered")
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  word_book_id     :bigint           not null
 #
 # Indexes
 #
-#  index_words_on_slug  (slug) UNIQUE
+#  index_words_on_slug          (slug) UNIQUE
+#  index_words_on_word_book_id  (word_book_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (word_book_id => word_books.id)
 #
 require 'rails_helper'
 

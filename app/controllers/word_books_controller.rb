@@ -3,8 +3,7 @@ class WordBooksController < ApplicationController
   before_action :set_wordbook, only: [:show]
 
   def index
-    @book_all = current_user.word_books.includes(:user, :words).order(created_at: :desc)
-    @word_counts = @book_all.map { |book| [book.id, book.words.size] }.to_h
+    @book_all = current_user.word_books.includes(:user).order(created_at: :desc)
     @mastered_word_counts = @book_all.map { |book| [book.id, book.words.where(status: 1).size] }.to_h
     @pagy, @word_books = pagy(@book_all)
     rescue Pagy::OverflowError
