@@ -37,6 +37,14 @@ class Word < ApplicationRecord
 
   friendly_id :name, use: %i[slugged history finders]
 
+  after_create do
+    User.increment_counter(:words_count, word_book.word_book_id)
+  end
+
+  after_destroy do
+    User.decrement_counter(:words_count, word_book.word_book_id)
+  end
+
   def should_generate_new_friendly_id?
     name_changed? || slug.blank?
   end

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20231103090524
+# Schema version: 20231103095111
 #
 # Table name: users
 #
@@ -13,6 +13,7 @@
 #  uid                    :string
 #  username               :string
 #  word_books_count       :integer
+#  words_count            :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #

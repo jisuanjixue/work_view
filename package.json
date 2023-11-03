@@ -5,14 +5,18 @@
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^7.3.0",
     "@picmo/popup-picker": "^5.8.5",
+    "@rails/actioncable": "^7.1.1",
     "@rails/actiontext": "^7.0.8",
     "esbuild": "^0.16.15",
     "flowbite": "^1.8.1",
+    "idiomorph": "^0.0.9",
     "picmo": "^5.8.5",
+    "stimulus-animated-number": "^4.1.0",
     "stimulus-use": "^0.52.0",
     "tailwindcss": "^3.3.3",
     "tailwindcss-animate": "^1.0.6",
-    "trix": "^2.0.6"
+    "trix": "^2.0.6",
+    "turbo-view-transitions": "^0.3.0"
   },
   "devDependencies": {
     "@prettier/plugin-ruby": "^4.0.2",
