@@ -17,7 +17,6 @@ const morphRender = (prevEl, newEl) => {
   return idiomorph.morph(prevEl, newEl, {
     callbacks: {
       beforeNodeMorphed: (fromEl, toEl) => {
-        console.log("🚀 ~ file: application.js:20 ~ morphRender ~ fromEl, toEl:", fromEl, toEl)
         if (typeof fromEl !== "object" || !fromEl.hasAttribute) return true;
         if (fromEl.isEqualNode(toEl)) return false;
 
@@ -57,39 +56,39 @@ document.addEventListener("turbo:before-render", (event) => {
     }
   });
   
-//   document.addEventListener("turbo:before-frame-render", (event) => {
-//     event.detail.render = (prevEl, newEl) => {
-//       Idiomorph.morph(prevEl, newEl.children, { morphStyle: "innerHTML" });
-//     };
-//   });
+  document.addEventListener("turbo:before-frame-render", (event) => {
+    event.detail.render = (prevEl, newEl) => {
+      Idiomorph.morph(prevEl, newEl.children, { morphStyle: "innerHTML" });
+    };
+  });
   
-//   document.addEventListener("turbo:before-stream-render", (event) => {
-//     if (shouldPerformTransition()) {
-//       const fallbackToDefaultActions = event.detail.render;
+  document.addEventListener("turbo:before-stream-render", (event) => {
+    if (shouldPerformTransition()) {
+      const fallbackToDefaultActions = event.detail.render;
   
-//       event.detail.render = (streamEl) => {
-//         if (streamEl.action == "update" || streamEl.action == "replace") {
-//           const [target] = streamEl.targetElements;
+      event.detail.render = (streamEl) => {
+        if (streamEl.action == "update" || streamEl.action == "replace") {
+          const [target] = streamEl.targetElements;
   
-//           if (target) {
-//             return performTransition(
-//               target,
-//               streamEl.templateElement.content,
-//               async () => {
-//                 await fallbackToDefaultActions(streamEl);
-//               },
-//               { transitionAttr: "data-turbo-stream-transition" }
-//             );
-//           }
-//         }
-//         return fallbackToDefaultActions(streamEl);
-//       };
-//     }
-//   });
+          if (target) {
+            return performTransition(
+              target,
+              streamEl.templateElement.content,
+              async () => {
+                await fallbackToDefaultActions(streamEl);
+              },
+              { transitionAttr: "data-turbo-stream-transition" }
+            );
+          }
+        }
+        return fallbackToDefaultActions(streamEl);
+      };
+    }
+  });
   
-//   document.addEventListener("turbo:load", () => {
-//     if (shouldPerformTransition()) Turbo.cache.exemptPageFromCache();
-//   });
+  document.addEventListener("turbo:load", () => {
+    if (shouldPerformTransition()) Turbo.cache.exemptPageFromCache();
+  });
 
 const sessionID = Math.random().toString(36).slice(4);
 
