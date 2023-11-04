@@ -27,6 +27,8 @@ class WordBook < ApplicationRecord
 
   normalizes :name, with: -> { _1.squish }
 
+  broadcasts_refreshes
+
   scope :ordered, -> { order(name: :desc)}
   scope :search, ->(q) {
     where(arel_table[:name].lower.matches("%#{q.downcase}%"))

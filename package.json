@@ -9,7 +9,6 @@
     "@rails/actiontext": "^7.0.8",
     "esbuild": "^0.16.15",
     "flowbite": "^1.8.1",
-    "idiomorph": "^0.0.9",
     "picmo": "^5.8.5",
     "stimulus-animated-number": "^4.1.0",
     "stimulus-use": "^0.52.0",
