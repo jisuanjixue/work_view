@@ -1,61 +1,43 @@
 <div class="container">
   <h1 class="text-center" data-turbo-transition="title"><span class="text-red-500 font-bold">单词</span>本</h1>
 </div>
-<div class="relative overflow-x-auto">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3">
-                    名称
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    单词数
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    已掌握数
-                </th>
-                 <th scope="col" class="px-6 py-3">
-                    是否编辑
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    操作
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-           <% @word_books.each do |book| %>
-               <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                   <%= book.name %>
-                </th>
-                <td class="px-6 py-4">
-                 <%= book.words_count %>
-                </td>
-                <td class="px-6 py-4">
+<div class="">
+  <div class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <div class="grid grid-cols-4 gap-4">
+       <% @word_books.each do |book| %>
+        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <%= link_to word_book_path(book), class: "h-32 mb-1 relative hover:opacity-90 transition-opacity" do %>
+              <div id="<%=dom_id(book, :cover) %>" class=" bg-gray-200" data-turbo-transition="cover">
+                <%- if book.cover_url.present? %>
+                  <%= image_tag book.cover_url, class: "h-full w-full object-cover" %>
+                <%- end -%>
+              </div>
+              <div class="p-5">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= book.name %></h5>
+              <div class="flex mt-4 space-x-3 md:mt-6">
+                <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  <%= book.words_count %>
+                </div>
+                <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                   <%= @mastered_word_counts[book.id] %>
-                </td>
-                <td class="px-6 py-4">
-                    <% if book.editable %>
-                       是
-                    <% else %>
-                        否
-                     <% end %>
-                </td>
-                 <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                        <%= link_to '详情',  word_book_path(book) %>
-                    </a>
-                </td>
-            </tr>
-           <% end %>
-        </tbody>
-    </table>
-      <div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+         </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+    <div class="mt-48 flex justify-end">
     <% if @pagy.count > @pagy.items %>
       <div class="">
         <%== pagy_nav(@pagy) %>
       </div>
     <% end %>
   </div>
-</div>
+
+
+
 

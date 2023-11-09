@@ -32,10 +32,10 @@ def seed_word_books
   john = User.second
 
     Rails.logger.debug { "创建  word_book" }
-    word_book = bobo.word_books.create(name: "单词本 1", editable: true, words_count: 0 )
+    word_book = bobo.word_books.create(name: "单词本 1", editable: true, words_count: 0, cover_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4Qdmi-pfgh3CSup4PqRziTs8NWwnF7BL9BuYJNMsqpA&s" )
     5.times do |y|
       Rails.logger.debug { "创建 word #{y} for book with user #{bobo.email}" }
-      bobo.word_books.create(name: "单词本 #{y}", editable: false, words_count: 0)
+      bobo.word_books.create(name: "单词本 #{y}", editable: false, words_count: 0, cover_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4Qdmi-pfgh3CSup4PqRziTs8NWwnF7BL9BuYJNMsqpA&s")
     end
 
     5.times do |y|

@@ -1,5 +1,4 @@
-@import "./transitions.css";
-
+@import "transitions.css";
 @import "actiontext.css";
 @import "pagy.scss";
 @tailwind base;

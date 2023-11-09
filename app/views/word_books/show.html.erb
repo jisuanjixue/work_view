@@ -1,3 +1,7 @@
+<%= link_to root_path, class: "opacity-90 hover:opacity-100", data: {"turbo-transition" => "title"} do %>
+  <span class="text-red-500 font-bold">单词</span>本
+  <hr class="my-4">
+<% end %>
 <div class="container">
   <h1 class="text-center"><%= @word_book.name %>单词列表</h1>
 </div>
@@ -36,7 +40,7 @@
                 </th>
                  <td class="px-6 py-4">
                     <div class="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline hover:opacity-90 transition-opacity">
                         <%= link_to '详情', word_book_word_path(@word_book, word) %>
                     </a>
                      <% if @word_book.editable %>

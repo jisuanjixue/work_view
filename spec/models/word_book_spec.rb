@@ -1,9 +1,10 @@
 # == Schema Information
-# Schema version: 20231026075111
+# Schema version: 20231109080149
 #
 # Table name: word_books
 #
 #  id          :bigint           not null, primary key
+#  cover_url   :string
 #  editable    :boolean          default(FALSE)
 #  name        :string
 #  words_count :integer          default(0), not null
