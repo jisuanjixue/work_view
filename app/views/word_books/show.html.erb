@@ -1,15 +1,15 @@
 <%= link_to root_path, class: "opacity-90 hover:opacity-100", data: {"turbo-transition" => "title"} do %>
-  <span class="text-red-500 font-bold">单词</span>本
+  <span class="text-red-500 font-bold"><%= @word_book.name %>单词列表</span>
   <hr class="my-4">
 <% end %>
-<div class="container">
-  <h1 class="text-center"><%= @word_book.name %>单词列表</h1>
+<div class="flex justify-end">
+   <% if @word_book.editable %>
+    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+      <%= link_to '添加', new_word_book_word_path(@word_book) %>
+    </button>
+   <% end %>
 </div>
- <% if @word_book.editable %>
-   <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-    <%= link_to '添加', new_word_book_word_path(@word_book) %>
-   </button>
-<% end %>
+
 <div class="relative overflow-x-auto">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

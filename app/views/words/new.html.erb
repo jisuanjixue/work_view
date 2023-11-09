@@ -1,5 +1,5 @@
-<section class="bg-white dark:bg-gray-900">
-  <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+<div class="bg-white flex items-center justify-center w-full ml-[500px] max-w-max p-4 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:border-gray-700 dark:bg-gray-900">
+  <div class="py-8 px-4 mx-auto lg:py-16">
     <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">添加单词</h2>
     <div>
       <%= form_with(model: [@word_book, @word_book.words.build], data: {controller: "emoji-picker"}) do |f| %>
@@ -38,4 +38,4 @@
       <% end %>
     </div>
   </div>
-</section>
+</div>
