@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   devise_for :users,  controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
+ 
+  # resources :users do
+
+  # end
+  # get 'user_profile/:id', to: 'users#show', controller: 'users/profile'
 
   resources :word_books do
     resources :words do
