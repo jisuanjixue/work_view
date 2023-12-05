@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_27_090031) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_19_011723) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,16 +37,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_27_090031) do
     t.index ["user_type", "user_id"], name: "index_login_activities_on_user"
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "title"
-    t.text "description"
-    t.integer "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_posts_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -62,36 +52,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_27_090031) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "word_book_words", force: :cascade do |t|
-    t.bigint "word_id", null: false
-    t.bigint "word_book_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["word_book_id"], name: "index_word_book_words_on_word_book_id"
-    t.index ["word_id"], name: "index_word_book_words_on_word_id"
-  end
-
-  create_table "word_books", force: :cascade do |t|
-    t.string "name"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "editable", default: false
-    t.index ["user_id"], name: "index_word_books_on_user_id"
-  end
-
-  create_table "words", force: :cascade do |t|
-    t.string "name"
-    t.string "pronunciation"
-    t.text "definition"
-    t.text "example_sentence"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "status", default: 0
-  end
-
-  add_foreign_key "posts", "users"
-  add_foreign_key "word_book_words", "word_books"
-  add_foreign_key "word_book_words", "words"
-  add_foreign_key "word_books", "users"
 end

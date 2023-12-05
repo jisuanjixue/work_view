@@ -6,12 +6,12 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  resources :word_books do
-    resources :words do
-      patch 'mastered', on: :member      
-      patch 'unmastered', on: :member
-    end
-  end  
+  # resources :word_books do
+  #   resources :words do
+  #     patch 'mastered', on: :member      
+  #     patch 'unmastered', on: :member
+  #   end
+  # end  
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # get 'home/index'

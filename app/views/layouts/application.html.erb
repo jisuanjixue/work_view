@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <% turbo_refreshes_with method: :morph, scroll: :preserve %>
+    <%= yield :head %>
   </head>
-
   <body>
     <header><%= render 'layouts/navbar' %> <%= render 'layouts/alerts' %></header>
     <main>
